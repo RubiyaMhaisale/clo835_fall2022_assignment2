@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  labels:
+    role: app
+spec:
+  containers:
+  - name: app
+    image: 772859080303.dkr.ecr.us-east-1.amazonaws.com/assignment_app:app
+    ports:
+    - containerPort: 8080
+    env:
+    - name: DBUSER
+      value: "root"
+    - name: DBPWD
+      value: "pw"
+    - name: DBPORT
+      value: "3306"
+    - name: DBHOST
+      value: "10.244.0.7"
+    - name: APP_COLOR
+      value: "blue"
+  imagePullSecrets:
+  - name: regcred
